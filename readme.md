@@ -1,3 +1,5 @@
+## Use this command to install dependencies
+
 sudo yum install docker
 
 sudo yum install git
