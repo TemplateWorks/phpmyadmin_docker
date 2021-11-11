@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: student
+      MYSQL_USER: student
+      MYSQL_PASSWORD: student
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - '3306:3306'
+    volumes:
+      - my-db:/var/lib/mysql
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8888:80
+    environment:
+      MYSQL_USERNAME: student
+      MYSQL_ROOT_PASSWORD: student
+
+
+volumes:
+  my-db:
