@@ -19,7 +19,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 sudo usermod -aG docker student
 
-git clone http://gihub.com/TemplateWorks/phpmyadmin_docker.git
+git clone https://github.com/TemplateWorks/phpmyadmin_docker.git
 
 cd phpmyadmin_docker/
 
