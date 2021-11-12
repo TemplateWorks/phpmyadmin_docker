@@ -65,3 +65,17 @@ cd phpmyadmin_docker/
 docker-compose up --build -d
 
 ---
+
+## install mysql-server in centos
+
+sudo yum -y remove mysql mysql-*
+
+sudo yum -y install mysql-server
+
+sudo systemctl start mysqld.service
+
+sudo systemctl enable mysqld
+
+mysql -u root
+
+---
