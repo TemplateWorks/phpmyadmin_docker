@@ -36,3 +36,9 @@ sudo yum -y install git
 ---
 
 git clone https://github.com/TemplateWorks/phpmyadmin_docker.git
+
+## Run Dockerized phpmyadmin in background
+
+cd phpmyadmin_docker/
+
+docker-compose up --build -d
