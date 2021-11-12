@@ -1,27 +1,44 @@
-## Use this command to install dependencies
+## Remove Docker
+--- 
+sudo yum -y remove docker docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
 
-sudo yum install docker
+## Install docker
+---
+curl -fsSL https://get.docker.com -o get-docker.sh
 
-sudo yum install git
+sudo sh get-docker.sh
 
-sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+## Last command return error use
+---
 
-sudo dnf install docker-ce docker-ce-cli containerd.io --allowerasing
+sudo yum install -y yum-utils
 
-systemctl enable --now docker
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
 
-firewall-cmd --zone=public --add-masquerade --permanent
-firewall-cmd --reload
+sudo yum install docker-ce docker-ce-cli containerd.io --allowerasing
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+## Install docker-compose
+---
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 sudo chmod +x /usr/local/bin/docker-compose
 
-sudo usermod -aG docker student
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+## Install Git
+---
+
+sudo yum -y install git
+
+## Clone phpmyadmin_docker repo
+---
 
 git clone https://github.com/TemplateWorks/phpmyadmin_docker.git
-
-cd phpmyadmin_docker/
-
-sudo docker-compose up --build -d
-
